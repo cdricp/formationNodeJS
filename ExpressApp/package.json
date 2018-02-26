@@ -1,0 +1,14 @@
+{
+  "name": "expressapp",
+  "version": "1.0.0",
+  "description": "D'la bombe",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "MOIIIIIIIIIII",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
