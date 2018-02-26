@@ -19,7 +19,11 @@ srv.on('request', (request,response) =>  {
         body= Buffer.concat(body).toString();
 
         if (request.url.indexOf("/echo") > -1) {
-            response.writeHead(200,{'Content-Type':'text/plain'});
+            if (body.length==0)
+                response.writeHead(400,{'Content-Type':'text/plain'});
+            else
+                response.writeHead(200,{'Content-Type':'text/plain'});
+                
             response.end(body);
         }
         else{
