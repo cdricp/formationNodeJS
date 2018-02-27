@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Lancer le programme",
-            "program": "${workspaceFolder}/tp2\\echo.js",
+            "program": "${workspaceFolder}/ExpressApp/express-locallibrary-tutorial\\bin\\www",
             "protocol": "inspector"
         }
     ]
