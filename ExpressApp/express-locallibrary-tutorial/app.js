@@ -11,6 +11,15 @@ var events = require('./routes/events');
 
 var app = express();
 
+// DB stuff
+var mongoose = require('mongoose')
+var mongoDB = 'mongodb://127.0.0.1/myDB'
+mongoose.connect(mongoDB)
+mongoose.Promise = global.Promise
+var db = mongoose.connection
+
+db.on('error', console.error.bind(console, 'DB Kaput :'))
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
