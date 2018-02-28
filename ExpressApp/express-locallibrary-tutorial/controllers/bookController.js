@@ -1,5 +1,3 @@
-
-
 //var moment = require('moment')
 var books = require('../models/book')
 var authors = require('../models/author')
@@ -8,10 +6,21 @@ var bookinstance = require('../models/bookinstance')
 
 var async = require('async')
 
+function _GetAllBooks() {
+   return books.find({}, 'title author').populate('author');
+}
+
 exports.GetAllBooks = function(req, res, next) {
     //res.send('Tous les Books')
-    books.find({}, 'title author').populate('author').exec(function(err, results) {
+    _GetAllBooks().exec(function(err, results) {
         res.render('books', { title: 'Liste des livres', error: [], book_list:results});
+    })
+    
+}
+exports._APIGetAllBooks = function(req, res, next) {
+    //res.send('Tous les Books')
+    _GetAllBooks().exec(function(err, results) {
+       res.send(results)
     })
     
 }

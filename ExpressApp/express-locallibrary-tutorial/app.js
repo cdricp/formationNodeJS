@@ -9,12 +9,21 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var events = require('./routes/events');
 var catalog = require('./routes/catalog');
+var api = require('./routes/api');
 
 var app = express();
 
 // DB stuff
 var mongoose = require('mongoose')
-var mongoDB = 'mongodb://127.0.0.1/myDB'
+
+if (process.env.NODE_ENV === 'test') {
+  var mongoDB = 'mongodb://127.0.0.1/myDB_test'
+}
+else {
+  var mongoDB = 'mongodb://127.0.0.1/myDB'
+}
+
+
 mongoose.connect(mongoDB)
 mongoose.Promise = global.Promise
 var db = mongoose.connection
@@ -37,6 +46,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/events', events);
 app.use('/catalog', catalog);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
