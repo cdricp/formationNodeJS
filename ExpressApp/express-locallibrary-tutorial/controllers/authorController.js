@@ -1,9 +1,13 @@
 
 
 //var moment = require('moment')
+var authors = require('../models/author')
+
 
 exports.GetAllAuthors = function(req, res, next) {
-    res.send('Tous les auteurs')
+    authors.find({}).exec(function(err, results) {
+        res.render('authors', { title: 'Liste des Auteurs', error: [], author_list:results});
+    })
 }
 
 exports.GetAuthor = function(req, res, next) {

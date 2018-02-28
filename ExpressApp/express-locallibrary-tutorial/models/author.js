@@ -17,7 +17,7 @@ AuthorSchema.virtual('url').get(function () {
   })
 
 AuthorSchema.virtual('name').get(function () {
-    return '${this.first_name} ${this.family_name}'
+    return this.first_name + ' ' + this.family_name
   })
 
 AuthorSchema.virtual('lifespan').get(function () {
